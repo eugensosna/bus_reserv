@@ -11,6 +11,6 @@ class BusRoute {
     required this.cityFrom,
     required this.cityTo,
     required this.distanceInKm
-  })
+  });
   
 }
