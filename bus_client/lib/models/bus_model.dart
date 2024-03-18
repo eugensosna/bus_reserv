@@ -12,5 +12,5 @@ class Bus {
     required this.busType,
     required this.totalSeat
   });
-  
+
 }
