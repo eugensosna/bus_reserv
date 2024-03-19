@@ -1,4 +1,4 @@
-import '../utils/constans.dart';
+import '../utils/constants.dart';
 
 class ResponseModel {
   ResponseStatus responseStatus;

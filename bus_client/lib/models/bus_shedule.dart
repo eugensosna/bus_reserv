@@ -5,7 +5,7 @@ class BusShedule {
   int? sheduleId;
   Bus bus;
   BusRoute busRoute;
-  String depatureTime;
+  String departureTime;
   int ticketPrice;
   int discount;
   int processingFee;
@@ -14,7 +14,7 @@ class BusShedule {
     this.sheduleId,
     required this.bus,
     required this.busRoute,
-    required this.depatureTime,
+    required this.departureTime,
     required this.ticketPrice,
     this.discount =0,
     this.processingFee = 0
