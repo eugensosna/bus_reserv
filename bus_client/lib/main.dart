@@ -1,4 +1,8 @@
+import 'package:bus_client/pages/search_page.dart';
+import 'package:bus_client/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import './pages/search_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,11 +18,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.lightGreen,
 
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        // useMaterial3: true,
       ),
-      home: const Scaffold(),
+      home:  const SearchPage(),
     );
   }
 }
