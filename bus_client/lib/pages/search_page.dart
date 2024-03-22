@@ -12,6 +12,8 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   String? fromCity, toCity;
   DateTime? departureDate;
+
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +21,7 @@ class _SearchPageState extends State<SearchPage> {
         title: const Text('Search'),
       ),
       body: Form(
+        key: _formKey,
         child: Center(
           child: ListView(
             padding: const EdgeInsets.all(8) ,
@@ -79,9 +82,17 @@ class _SearchPageState extends State<SearchPage> {
                     ),
                     Text(departureDate == null ? "No date chosen": getFormattedDate(departureDate!, pattern: 'EEE MMM dd, yyyy'))
                   ],
+                ),
+                Center(
+                  child: SizedBox(
+                    width: 150,
+                    child: ElevatedButton(
+                      onPressed: _search,
+                      child:  const Text('Search'),
+                    ),
+                  ),
                 )
 
-                // dropDownFromCiy(toCity, "To")
             ],
 
           ),
@@ -100,6 +111,19 @@ class _SearchPageState extends State<SearchPage> {
       setState(() {
         departureDate = selectedDate as DateTime?;   
       });
+      
+    }
+  }
+
+  void _search() {
+    if (departureDate == null) {
+      ScaffoldMessenger.of(context)
+      .showSnackBar(SnackBar(content: Text('Please select date')));
+      return;
+      
+    }
+    if (_formKey.currentState!.validate()) {
+        
       
     }
   }
