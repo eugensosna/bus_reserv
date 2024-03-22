@@ -1,4 +1,5 @@
 import 'package:bus_client/utils/constants.dart';
+import 'package:bus_client/utils/helper_functions.dart';
 import 'package:flutter/material.dart';
     
 class SearchPage extends StatefulWidget {
@@ -11,34 +12,6 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   String? fromCity, toCity;
   DateTime? departureDate;
-
-
-  Widget  dropDownFromCiy (String? cityField, String  fiealdText){
-  return DropdownButtonFormField(
-                
-                value: cityField,
-                validator: (value) {
-                  if(value== null|| value.isEmpty){
-                    return emptyFieldErrMessage;
-                  }
-                  return null; 
-                },
-                hint:  Text(fiealdText ),
-                isExpanded: true,
-                decoration: const InputDecoration(
-                  errorStyle: TextStyle(color: Colors.white)
-                ),
-                items: cities.map((city) => DropdownMenuItem<String>(
-                  value: city,
-                  child: Text(city)) ).toList(), 
-                onChanged: (value){
-                  setState(() {
-                    cityField = value;
-                  });
-
-                });
-}
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,12 +48,59 @@ class _SearchPageState extends State<SearchPage> {
 
                 }),
                 const SizedBox(height: 10,),
+                DropdownButtonFormField(
+                
+                value: toCity,
+                validator: (value) {
+                  if(value== null|| value.isEmpty){
+                    return emptyFieldErrMessage;
+                  }
+                  return null; 
+                },
+                hint:  Text("To" ),
+                isExpanded: true,
+                decoration: const InputDecoration(
+                  errorStyle: TextStyle(color: Colors.white)
+                ),
+                items: cities.map((city) => DropdownMenuItem<String>(
+                  value: city,
+                  child: Text(city)) ).toList(), 
+                onChanged: (value){
+                  setState(() {
+                    toCity = value;
+                  });
 
-                dropDownFromCiy(toCity, "To")
+                }),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(onPressed: _selectDate,
+                    child: const Text('Select Departure Date'),
+                    ),
+                    Text(departureDate == null ? "No date chosen": getFormattedDate(departureDate!, pattern: 'EEE MMM dd, yyyy'))
+                  ],
+                )
+
+                // dropDownFromCiy(toCity, "To")
             ],
 
           ),
       ),
     ));
+  }
+
+  void _selectDate() async {
+    final selectedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+       firstDate: DateTime.now(),
+        lastDate: DateTime.now().add(const Duration(days: 7))
+        );
+    if (selectedDate!= null){
+      setState(() {
+        departureDate = selectedDate as DateTime?;   
+      });
+      
+    }
   }
 }
