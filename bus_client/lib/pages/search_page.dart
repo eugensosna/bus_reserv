@@ -123,9 +123,8 @@ class _SearchPageState extends State<SearchPage> {
       try {
         final route = TempDB.tableRoute.firstWhere((element) =>
             element.cityFrom == fromCity && element.cityTo == toCity);
-            showMsg(context, route.routeName);
+        showMsg(context, route.routeName);
       } on StateError catch (error) {
-
         showMsg(context, 'No route found');
       }
     }
