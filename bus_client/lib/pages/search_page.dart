@@ -1,7 +1,11 @@
+import 'dart:async';
+
 import 'package:bus_client/datasource/temp_db.dart';
+import 'package:bus_client/providers/app_data_provider.dart';
 import 'package:bus_client/utils/constants.dart';
 import 'package:bus_client/utils/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -15,6 +19,7 @@ class _SearchPageState extends State<SearchPage> {
   DateTime? departureDate;
 
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,19 +119,17 @@ class _SearchPageState extends State<SearchPage> {
     }
   }
 
-  void _search() {
+  void _search () {
     if (departureDate == null) {
       showMsg(context, emptyDateErrMessage);
       return;
     }
     if (_formKey.currentState!.validate()) {
-      try {
-        final route = TempDB.tableRoute.firstWhere((element) =>
-            element.cityFrom == fromCity && element.cityTo == toCity);
-        showMsg(context, route.routeName);
-      } on StateError catch (error) {
-        showMsg(context, 'No route found');
-      }
+      Provider.of<AppDataProvider>(context, listen: false)
+      .getRouteByCityFromAndCityTo(fromCity!, toCity!)
+      .then((route){
+
+      });
     }
   }
 }

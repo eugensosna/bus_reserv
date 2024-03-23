@@ -1,10 +1,13 @@
+import 'dart:js';
+
 import 'package:bus_client/pages/search_page.dart';
-import 'package:bus_client/utils/constants.dart';
+import 'package:bus_client/providers/app_data_provider.dart';
 import 'package:flutter/material.dart';
-import './pages/search_page.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => AppDataProvider(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
