@@ -1,7 +1,9 @@
-import 'dart:js';
+//import 'dart:js'7;
 
 import 'package:bus_client/pages/search_page.dart';
+import 'package:bus_client/pages/search_result_page.dart';
 import 'package:bus_client/providers/app_data_provider.dart';
+import 'package:bus_client/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -27,6 +29,12 @@ class MyApp extends StatelessWidget {
         // useMaterial3: true,
       ),
       home: const SearchPage(),
+      routes:{
+        routeNameHome: (context) => const SearchPage(),
+        routeNameSearchResultPage: (context) => const SearchResultPage(),
+      }
+
+
     );
   }
 }

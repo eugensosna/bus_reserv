@@ -77,6 +77,7 @@ class DummyDataSource extends Datasource {
         (element) => element.cityFrom == cityFrom && element.cityTo == cityTo);
     return route;
     } on StateError catch (error) {
+      print(error.toString());
         return null;
     }
   }
@@ -89,8 +90,7 @@ class DummyDataSource extends Datasource {
 
   @override
   Future<List<BusShedule>> getShedulesByRouteName(String routeName) {
-    // TODO: implement getShedulesByRouteName
-    throw UnimplementedError();
+    return TempDB.tableSchedule.where((shedule) => )
   }
 
   @override
