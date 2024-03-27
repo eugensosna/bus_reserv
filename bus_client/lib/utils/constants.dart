@@ -11,6 +11,8 @@ const emptyDateErrMessage = "Please select a departure date";
 const String routeNameHome = "search";
 const String routeNameSearchResultPage = 'search_result';
 const String routeLoginPage = "login";
+const String routeNameSeatPlanPage = 'seat_plan';
+
 
 
 const cities = [

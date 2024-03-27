@@ -1,6 +1,4 @@
-import 'dart:async';
 
-import 'package:bus_client/datasource/temp_db.dart';
 import 'package:bus_client/providers/app_data_provider.dart';
 import 'package:bus_client/utils/constants.dart';
 import 'package:bus_client/utils/helper_functions.dart';
@@ -8,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class SearchPage extends StatefulWidget {
-  const SearchPage({Key? key}) : super(key: key);
+  const SearchPage({super.key});
 
   @override
   _SearchPageState createState() => _SearchPageState();
@@ -20,6 +18,13 @@ class _SearchPageState extends State<SearchPage> {
 
   final _formKey = GlobalKey<FormState>();
 
+ @override
+ void initState(){
+      fromCity = 'Dhaka';
+    toCity = 'Sylhet';
+    departureDate = DateTime.now();
+    super.initState(); 
+ }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +70,7 @@ class _SearchPageState extends State<SearchPage> {
                       }
                       return null;
                     },
-                    hint: Text("To"),
+                    hint: const Text("To"),
                     isExpanded: true,
                     decoration: const InputDecoration(
                         errorStyle: TextStyle(color: Colors.white)),

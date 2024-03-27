@@ -11,5 +11,9 @@ class AppDataProvider extends ChangeNotifier {
   Future<BusRoute?> getRouteByCityFromAndCityTo(String cityFrom , String cityTo){
     return _datasource.getRouteByCityFromAndCityTo(cityFrom, cityTo);
   }
+   Future <List<BusShedule>> getShedulesByRouteName  (String routeName) async {
+    return _datasource.getShedulesByRouteName(routeName);
+    
+   }
 
 }

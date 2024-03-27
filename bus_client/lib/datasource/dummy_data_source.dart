@@ -89,8 +89,9 @@ class DummyDataSource extends Datasource {
   }
 
   @override
-  Future<List<BusShedule>> getShedulesByRouteName(String routeName) {
-    return TempDB.tableSchedule.where((shedule) => )
+  Future<List<BusShedule>> getShedulesByRouteName(String routeName) async {
+    return TempDB.tableSchedule.where((element) => element.busRoute.routeName ==routeName).toList();
+    //return TempDB.tableSchedule.where((shedule) => )
   }
 
   @override
