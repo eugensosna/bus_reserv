@@ -5,7 +5,7 @@ import 'package:bus_client/models/bus_shedule.dart';
 import 'package:flutter/material.dart';
 
 class AppDataProvider extends ChangeNotifier {
-  List<BusShedule> _sheduleList = [];
+  final List<BusShedule> _sheduleList = [];
   List<BusShedule> get sheduleList => _sheduleList;
   final Datasource _datasource = DummyDataSource();
   Future<BusRoute?> getRouteByCityFromAndCityTo(String cityFrom , String cityTo){

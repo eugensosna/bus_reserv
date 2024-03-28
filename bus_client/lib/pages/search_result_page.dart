@@ -81,20 +81,20 @@ class ScheduleItemView extends StatelessWidget {
               children: [
                 Text(
                   'From: ${shedule.busRoute.cityFrom}',
-                  style: TextStyle(fontSize: 17),),
+                  style: const TextStyle(fontSize: 17),),
                 Text(
                   'To: ${shedule.busRoute.cityTo}',
-                  style: TextStyle(fontSize: 17),),
+                  style: const TextStyle(fontSize: 17),),
               ],
             ),
             ),
             Padding(padding: const EdgeInsets.all(10),
             child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: [
               Text('Departure Time: ${shedule.departureTime}',
-              style: TextStyle(fontSize: 18),),
+              style: const TextStyle(fontSize: 18),),
               Text(
                 'Total seat: ${shedule.bus.totalSeat}',
-                style:  TextStyle(fontSize: 19),
+                style:  const TextStyle(fontSize: 19),
                 )
             ],),),
 
