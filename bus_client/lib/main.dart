@@ -2,6 +2,7 @@
 
 import 'package:bus_client/pages/search_page.dart';
 import 'package:bus_client/pages/search_result_page.dart';
+import 'package:bus_client/pages/seat_plane_page.dart';
 import 'package:bus_client/providers/app_data_provider.dart';
 import 'package:bus_client/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,10 @@ class MyApp extends StatelessWidget {
       routes:{
         routeNameHome: (context) => const SearchPage(),
         routeNameSearchResultPage: (context) => const SearchResultPage(),
+          routeNameSeatPlanPage: (context) {
+            print(routeNameSeatPlanPage);
+            return const SeatPlanePage();
+          },
       }
 
 
