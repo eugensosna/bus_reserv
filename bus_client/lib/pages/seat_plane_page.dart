@@ -50,7 +50,7 @@ class _SeatPlanePageState extends State<SeatPlanePage> {
                         Container(
                           width: 20,
                           height: 20,
-                          color: setBrookedColor,
+                          color: seatBookedColor,
                         ),
                         const SizedBox(
                           width: 10,
@@ -69,7 +69,7 @@ class _SeatPlanePageState extends State<SeatPlanePage> {
                         Container(
                           width: 20,
                           height: 20,
-                          color: setAvialebleColor,
+                          color: seatAvailableColor,
                         ),
                         const SizedBox(
                           width: 10,

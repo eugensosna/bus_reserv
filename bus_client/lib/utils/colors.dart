@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-const setBrookedColor = Colors.red;
-const setAvialebleColor = Colors.grey;
-const setSelectedColor = Colors.green;
+const seatBookedColor = Colors.red;
+const seatAvailableColor = Colors.grey;
+const seatSelectedColor = Colors.green;
