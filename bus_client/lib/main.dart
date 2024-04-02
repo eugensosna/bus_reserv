@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         routeNameSearchResultPage: (context) => const SearchResultPage(),
           routeNameSeatPlanPage: (context) {
             print(routeNameSeatPlanPage);
-            return const SeatPlanePage();
+            return const SeatPlanPage();
           },
       }
 

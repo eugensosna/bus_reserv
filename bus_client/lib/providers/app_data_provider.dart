@@ -1,5 +1,6 @@
 import 'package:bus_client/datasource/data_source.dart';
 import 'package:bus_client/datasource/dummy_data_source.dart';
+import 'package:bus_client/models/bus_reservation.dart';
 import 'package:bus_client/models/bus_route.dart';
 import 'package:bus_client/models/bus_shedule.dart';
 import 'package:flutter/material.dart';
@@ -15,5 +16,11 @@ class AppDataProvider extends ChangeNotifier {
 
   Future<List<BusShedule>> getShedulesByRouteName(String routeName) async {
     return _datasource.getShedulesByRouteName(routeName);
+  }
+  
+  Future<List<BusReservation>> getReservationsByScheduleAndDepartureDate(
+      int scheduleId, String departureDate) {
+    return _dataSource.getReservationsByScheduleAndDepartureDate(
+        scheduleId, departureDate);
   }
 }
