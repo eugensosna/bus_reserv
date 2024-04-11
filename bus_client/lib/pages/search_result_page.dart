@@ -35,7 +35,7 @@ class SearchResultPage extends StatelessWidget {
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: sheduleList!
-                                .map((shedule) => ScheduleItemView(
+                                .map((shedule) => sheduleItemView(
                                       shedule: shedule,
                                       date: departureDate,
                                     ))
@@ -50,11 +50,11 @@ class SearchResultPage extends StatelessWidget {
   }
 }
 
-class ScheduleItemView extends StatelessWidget {
+class sheduleItemView extends StatelessWidget {
   final String date;
   final BusShedule shedule;
 
-  const ScheduleItemView(
+  const sheduleItemView(
       {super.key, required this.date, required this.shedule});
 
   @override

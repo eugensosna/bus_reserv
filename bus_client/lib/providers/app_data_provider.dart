@@ -18,9 +18,9 @@ class AppDataProvider extends ChangeNotifier {
     return _datasource.getShedulesByRouteName(routeName);
   }
   
-  Future<List<BusReservation>> getReservationsByScheduleAndDepartureDate(
-      int scheduleId, String departureDate) {
-    return _dataSource.getReservationsByScheduleAndDepartureDate(
-        scheduleId, departureDate);
+  Future<List<BusReservation>> getReservationsBysheduleAndDepartureDate(
+      int sheduleId, String departureDate) {
+    return _datasource.getReservationsBysheduleAndDepartureDate(
+        sheduleId, departureDate);
   }
 }

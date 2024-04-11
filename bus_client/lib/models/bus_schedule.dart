@@ -2,10 +2,10 @@
 import 'package:bus_client/models/bus_route.dart';
 
 import 'bus_model.dart';
-import 'but_route.dart';
+//import 'but_route.dart';
 
-class BusSchedule {
-  int? scheduleId;
+class BusShedule {
+  int? sheduleId;
   Bus bus;
   BusRoute busRoute;
   String departureTime;
@@ -13,8 +13,8 @@ class BusSchedule {
   int discount;
   int processingFee;
 
-  BusSchedule(
-      {this.scheduleId,
+  BusShedule(
+      {this.sheduleId,
       required this.bus,
       required this.busRoute,
       required this.departureTime,

@@ -12,6 +12,8 @@ const String routeNameHome = "search";
 const String routeNameSearchResultPage = 'search_result';
 const String routeLoginPage = "login";
 const String routeNameSeatPlanPage = 'seat_plan';
+const String routeNameBookingConfirmationPage = 'booking_cinfirmation';
+
 
 
 

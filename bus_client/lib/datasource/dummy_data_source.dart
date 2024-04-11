@@ -71,11 +71,11 @@ class DummyDataSource extends Datasource {
   }
   
   @override
-  Future<List<BusReservation>> getReservationsByScheduleAndDepartureDate(
-      int scheduleId, String departureDate) async {
+  Future<List<BusReservation>> getReservationsBysheduleAndDepartureDate(
+      int sheduleId, String departureDate) async {
     return TempDB.tableReservation
         .where((element) =>
-            element.busShedule.sheduleId == scheduleId &&
+            element.busShedule.sheduleId == sheduleId &&
             element.depatureDate == departureDate)
         .toList();
   }
@@ -100,8 +100,10 @@ class DummyDataSource extends Datasource {
 
   @override
   Future<List<BusShedule>> getShedulesByRouteName(String routeName) async {
-    return TempDB.tableSchedule.where((element) => element.busRoute.routeName ==routeName).toList();
-    //return TempDB.tableSchedule.where((shedule) => )
+    return TempDB.tableshedule
+        .where((element) => element.busRoute.routeName == routeName)
+        .toList();
+    //return TempDB.tableshedule.where((shedule) => )
   }
 
   @override

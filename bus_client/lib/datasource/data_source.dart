@@ -25,8 +25,8 @@ abstract class Datasource {
   Future<List <BusReservation>>getReservationByMobile(String mobile);
   Future<List <BusReservation>>getReservationBySheduleAndDepartureDate(int sheduleId,
   String departureDate);
-  Future<List<BusReservation>> getReservationsByScheduleAndDepartureDate(
-      int scheduleId, String departureDate);
+  Future<List<BusReservation>> getReservationsBysheduleAndDepartureDate(
+      int sheduleId, String departureDate);
 
 
    

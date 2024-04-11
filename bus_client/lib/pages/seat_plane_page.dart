@@ -1,16 +1,12 @@
 import 'package:bus_client/customswidgets/seat_plan_view.dart';
 import 'package:bus_client/utils/colors.dart';
 import 'package:bus_client/utils/helper_functions.dart';
-import 'package:bus_client/customswidgets/seat_plan_view.dart';
 import 'package:bus_client/providers/app_data_provider.dart';
-import 'package:bus_client/utils/colors.dart';
 import "package:bus_client/utils/constants.dart";
-import 'package:bus_client/utils/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:bus_client/datasource/data_source.dart';
 
-import '../models/bus_schedule.dart';
+import '../models/bus_shedule.dart';
 
 class SeatPlanPage extends StatefulWidget {
   const SeatPlanPage({Key? key}) : super(key: key);
@@ -20,7 +16,7 @@ class SeatPlanPage extends StatefulWidget {
 }
 
 class _SeatPlanPageState extends State<SeatPlanPage> {
-  late BusSchedule schedule;
+  late BusShedule shedule;
   late String departureDate;
   int totalSeatBooked = 0;
   String bookedSeatNumbers = '';
@@ -32,7 +28,7 @@ class _SeatPlanPageState extends State<SeatPlanPage> {
   @override
   void didChangeDependencies() {
     final argList = ModalRoute.of(context)!.settings.arguments as List;
-    schedule = argList[0];
+    shedule = argList[0];
     departureDate = argList[1];
     _getData();
     super.didChangeDependencies();
@@ -40,15 +36,15 @@ class _SeatPlanPageState extends State<SeatPlanPage> {
 
   _getData() async {
     final resList = await Provider.of<AppDataProvider>(context, listen: false)
-        .getReservationsByScheduleAndDepartureDate(
-            schedule.scheduleId!, departureDate);
+        .getReservationsBysheduleAndDepartureDate(
+            shedule.sheduleId!, departureDate);
     setState(() {
       isDataLoading = false;
     });
     List<String> seats = [];
     for (final res in resList) {
       totalSeatBooked += res.totalSeatBooked!;
-      seats.add((res.seatNumbers));
+      seats.add((res.seatNumber));
     }
     bookedSeatNumbers = seats.join(',');
   }
@@ -130,8 +126,8 @@ class _SeatPlanPageState extends State<SeatPlanPage> {
                     },
                     totalSeatBooked: totalSeatBooked,
                     bookedSeatNumbers: bookedSeatNumbers,
-                    totalSeat: schedule.bus.totalSeat,
-                    isBusinessClass: schedule.bus.busType == busTypeACBusiness,
+                    totalSeat: shedule.bus.totalSeat,
+                    isBusinessClass: shedule.bus.busType == busTypeACBusiness,
                   ),
                 ),
               ),
@@ -144,7 +140,7 @@ class _SeatPlanPageState extends State<SeatPlanPage> {
                 Navigator.pushNamed(context, routeNameBookingConfirmationPage,
                     arguments: [
                       departureDate,
-                      schedule,
+                      shedule,
                       selectedSeatStringNotifier.value,
                       selectedSeats.length
                     ]);
