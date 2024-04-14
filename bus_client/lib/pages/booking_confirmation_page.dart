@@ -1,20 +1,33 @@
-import 'package:bus_client/models/bus_schedule.dart';
+import 'package:bus_client/models/bus_shedule.dart';
+import 'package:bus_client/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-class BokkingConformationPage  extends StatefulWidget {
-  const BokkingConformationPage ({Key? key}): super(key: key);
+class BookingConfirmationPage extends StatefulWidget {
+  const BookingConfirmationPage({super.key});
 
   @override
-  State<BokkingConformationPage > createState() =>
-      _BokkingConformationPageState();
+  State<BookingConfirmationPage> createState() =>
+      _BookingConfirmationPageState();
 }
 
-class _BokkingConformationPageState  extends State<BokkingConformationPage > {
+class _BookingConfirmationPageState extends State<BookingConfirmationPage> {
   late BusShedule shedule;
   late String departureDate;
   late int totalSeatsBooked;
   late String seatNumbers;
   bool isFirst = true;
+  final _formKey = GlobalKey<FormState>();
+  final nameController = TextEditingController();
+  final mobileController = TextEditingController();
+  final emailController = TextEditingController();
+
+  @override
+  void initState() {
+    nameController.text = "Mr.ABC";
+    mobileController.text = "123";
+    emailController.text = "email";
+    super.initState();
+  }
 
   @override
   void didChangeDependencies() {
@@ -34,6 +47,74 @@ class _BokkingConformationPageState  extends State<BokkingConformationPage > {
   }
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Confirmin Booking'),
+      ),
+      body: Form(
+        key: _formKey,
+        child: ListView(
+          padding: const EdgeInsets.all(8.8),
+          children: [
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'Please provide your informaton',
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextFormField(
+                controller: nameController,
+                decoration: const InputDecoration(
+                  hintText: 'Customer name',
+                  filled: true,
+                  prefixIcon: Icon(Icons.person),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return emptyFieldErrMessage;
+                  }
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextFormField(
+                controller: mobileController,
+                decoration: const InputDecoration(
+                  hintText: 'Mobile number',
+                  filled: true,
+                  prefixIcon: Icon(Icons.e_mobiledata),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return emptyFieldErrMessage;
+                  }
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextFormField(
+                controller: emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: const InputDecoration(
+                  hintText: 'Email adress',
+                  filled: true,
+                  prefixIcon: Icon(Icons.email),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return emptyFieldErrMessage;
+                  }
+                },
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
