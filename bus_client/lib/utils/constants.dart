@@ -1,6 +1,6 @@
 const currency = "\$";
 
-enum ResponseStatus { Saved, FAILED, UNAUTHORIZED }
+enum ResponseStatus { FAILED, UNAUTHORIZED, SAVED }
 
 const busTypes = [busTypeACBusiness, busTypeACEconomy, busTypeNonAc];
 const String busTypeNonAc = 'NON-AC';
@@ -13,6 +13,8 @@ const String routeNameSearchResultPage = 'search_result';
 const String routeLoginPage = "login";
 const String routeNameSeatPlanPage = 'seat_plan';
 const String routeNameBookingConfirmationPage = 'booking_cinfirmation';
+const String reservationActive = 'Active';
+
 
 
 
