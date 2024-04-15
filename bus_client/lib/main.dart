@@ -35,12 +35,10 @@ class MyApp extends StatelessWidget {
       routes:{
         routeNameHome: (context) => const SearchPage(),
         routeNameSearchResultPage: (context) => const SearchResultPage(),
-          routeNameSeatPlanPage: (context) {
-            print(routeNameSeatPlanPage);
-            return const SeatPlanPage();
-          },
+          routeNameSeatPlanPage: (context) => const SeatPlanPage(),
           routeNameBookingConfirmationPage: (context) =>
-              const BookingConfirmationPage()
+              const BookingConfirmationPage(),
+          // routeNameAddBusPage
       }
 
 
