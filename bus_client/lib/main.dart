@@ -30,7 +30,8 @@ class MyApp extends StatelessWidget {
         // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         // useMaterial3: true,
       ),
-      home: const SearchPage(),
+        //home: const SearchPage(),
+        initialRoute: routeNameHome,
       routes:{
         routeNameHome: (context) => const SearchPage(),
         routeNameSearchResultPage: (context) => const SearchResultPage(),
