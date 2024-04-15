@@ -1,4 +1,5 @@
 
+import 'package:bus_client/drawers/main_drawer.dart';
 import 'package:bus_client/providers/app_data_provider.dart';
 import 'package:bus_client/utils/constants.dart';
 import 'package:bus_client/utils/helper_functions.dart';
@@ -28,6 +29,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: MainDrawer(),
         appBar: AppBar(
           title: const Text('Search'),
         ),
