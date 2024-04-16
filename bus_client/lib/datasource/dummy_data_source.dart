@@ -11,9 +11,15 @@ import 'package:bus_client/utils/constants.dart';
 
 class DummyDataSource extends Datasource {
   @override
-  Future<ResponseModel> addBus(Bus bus) {
-    // TODO: implement addBus
-    throw UnimplementedError();
+  Future<ResponseModel> addBus(Bus bus) async {
+    TempDB.tableBus.add(bus);
+    return ResponseModel(
+        responseStatus: ResponseStatus.SAVED,
+        statusCode: 200,
+        message: 'bus has been saved',
+        object: {});
+    
+  
   }
 
   @override

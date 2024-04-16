@@ -1,5 +1,6 @@
 import 'package:bus_client/datasource/data_source.dart';
 import 'package:bus_client/datasource/dummy_data_source.dart';
+import 'package:bus_client/models/bus_model.dart';
 import 'package:bus_client/models/bus_reservation.dart';
 import 'package:bus_client/models/bus_route.dart';
 import 'package:bus_client/models/bus_shedule.dart';
@@ -26,5 +27,8 @@ class AppDataProvider extends ChangeNotifier {
   }
   Future<ResponseModel> addReservation(BusReservation reservation) {
     return _datasource.addReservation(reservation);
+  }
+  Future<ResponseModel> addBus(Bus bus) {
+    return _datasource.addBus(bus);
   }
 }
