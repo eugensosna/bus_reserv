@@ -48,6 +48,7 @@ class _AddBusPageState extends State<AddBusPage> {
                   if (value == null || value.isEmpty) {
                     return 'please select a bus Type';
                   }
+                  return null;
                 },
                 value: busType,
                 isExpanded: true,
@@ -75,10 +76,10 @@ class _AddBusPageState extends State<AddBusPage> {
               ),
               TextFormField(
                 controller: numberController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Bus Number',
                   filled: true,
-                  prefixIcon: const Icon(Icons.bus_alert),
+                  prefixIcon: Icon(Icons.bus_alert),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -110,8 +111,8 @@ class _AddBusPageState extends State<AddBusPage> {
               Center(
                 child: SizedBox(
                   child: ElevatedButton(
-                    child: const Text('Add Bus'),
                     onPressed: addBus,
+                    child: const Text('Add Bus'),
                   ),
                 ),
               )
@@ -143,7 +144,6 @@ class _AddBusPageState extends State<AddBusPage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     seatController.dispose();
     nameController.dispose();
     numberController.dispose();

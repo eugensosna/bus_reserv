@@ -8,6 +8,8 @@ import 'package:bus_client/models/response_model.dart';
 import 'package:flutter/material.dart';
 
 class AppDataProvider extends ChangeNotifier {
+  List<Bus> _busList = [];
+  List<Bus> get busList =>_busList;
   final List<BusShedule> _sheduleList = [];
   List<BusShedule> get sheduleList => _sheduleList;
   final Datasource _datasource = DummyDataSource();
@@ -30,5 +32,8 @@ class AppDataProvider extends ChangeNotifier {
   }
   Future<ResponseModel> addBus(Bus bus) {
     return _datasource.addBus(bus);
+  }
+  Future<ResponseModel> addRoute(BusRoute route) {
+    return _datasource.addRoute(route);
   }
 }

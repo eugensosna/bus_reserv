@@ -1,4 +1,3 @@
-// TODO Implement this library.
 import 'package:bus_client/models/bus_route.dart';
 
 import 'bus_model.dart';
