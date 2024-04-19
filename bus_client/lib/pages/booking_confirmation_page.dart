@@ -1,5 +1,5 @@
 import 'package:bus_client/models/bus_reservation.dart';
-import 'package:bus_client/models/bus_shedule.dart';
+import 'package:bus_client/models/bus_schedule.dart';
 import 'package:bus_client/models/customer.dart';
 import 'package:bus_client/providers/app_data_provider.dart';
 import 'package:bus_client/utils/constants.dart';

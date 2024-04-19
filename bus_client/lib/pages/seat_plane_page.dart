@@ -1,4 +1,5 @@
 import 'package:bus_client/customswidgets/seat_plan_view.dart';
+import 'package:bus_client/models/bus_schedule.dart';
 import 'package:bus_client/utils/colors.dart';
 import 'package:bus_client/utils/helper_functions.dart';
 import 'package:bus_client/providers/app_data_provider.dart';
@@ -6,10 +7,9 @@ import "package:bus_client/utils/constants.dart";
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../models/bus_shedule.dart';
 
 class SeatPlanPage extends StatefulWidget {
-  const SeatPlanPage({Key? key}) : super(key: key);
+  const SeatPlanPage({super.key});
 
   @override
   State<SeatPlanPage> createState() => _SeatPlanPageState();
@@ -43,7 +43,7 @@ class _SeatPlanPageState extends State<SeatPlanPage> {
     });
     List<String> seats = [];
     for (final res in resList) {
-      totalSeatBooked += res.totalSeatBooked!;
+      totalSeatBooked += res.totalSeatBooked;
       seats.add((res.seatNumber));
     }
     bookedSeatNumbers = seats.join(',');

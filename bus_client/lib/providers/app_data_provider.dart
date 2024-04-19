@@ -3,7 +3,8 @@ import 'package:bus_client/datasource/dummy_data_source.dart';
 import 'package:bus_client/models/bus_model.dart';
 import 'package:bus_client/models/bus_reservation.dart';
 import 'package:bus_client/models/bus_route.dart';
-import 'package:bus_client/models/bus_shedule.dart';
+import 'package:bus_client/models/bus_schedule.dart';
+import 'package:bus_client/models/reservation_expansion_item.dart';
 import 'package:bus_client/models/response_model.dart';
 import 'package:flutter/material.dart';
 
@@ -39,4 +40,28 @@ class AppDataProvider extends ChangeNotifier {
   Future<ResponseModel> addRoute(BusRoute route) {
     return _datasource.addRoute(route);
   }
+
+
+  List<ReservationExpansionItem> getExpansionItems(
+      List<BusReservation> reservationList) {
+    return List.generate(reservationList.length, (index) {
+      final reservation = reservationList[index];
+      return ReservationExpansionItem(
+        header: ReservationExpansionHeader(
+          reservationId: reservation.reservationId,
+          departureDate: reservation.depatureDate,
+          schedule: reservation.busShedule,
+          timestamp: reservation.timestamp,
+          reservationStatus: reservation.reservationStatus,
+        ),
+        body: ReservationExpansionBody(
+          customer: reservation.customer,
+          totalSeatedBooked: reservation.totalSeatBooked,
+          seatNumbers: reservation.seatNumber,
+          totalPrice: reservation.totalPrice,
+        ),
+      );
+    });
+  }
+
 }

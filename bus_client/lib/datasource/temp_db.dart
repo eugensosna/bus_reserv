@@ -1,8 +1,9 @@
 
 
+import 'package:bus_client/models/bus_schedule.dart';
+
 import '../models/bus_model.dart';
 import '../models/bus_reservation.dart';
-import '../models/bus_shedule.dart';
 import '../models/bus_route.dart';
 import '../utils/constants.dart';
 

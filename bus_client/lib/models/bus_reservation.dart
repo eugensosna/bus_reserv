@@ -1,4 +1,5 @@
-import 'bus_shedule.dart';
+import 'package:bus_client/models/bus_schedule.dart';
+
 
 import 'customer.dart';
 
