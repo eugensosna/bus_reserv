@@ -1,5 +1,6 @@
 import 'package:bus_client/models/bus_model.dart';
 import 'package:bus_client/models/bus_route.dart';
+import 'package:bus_client/models/bus_schedule.dart';
 import 'package:bus_client/providers/app_data_provider.dart';
 import 'package:bus_client/utils/constants.dart';
 import 'package:bus_client/utils/helper_functions.dart';
@@ -34,7 +35,7 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
         key: _formKey,
         child: Center(
           child: ListView(
-            padding: EdgeInsets.symmetric(horizontal: 40),
+            padding: const EdgeInsets.symmetric(horizontal: 40),
             shrinkWrap: true,
             children: [
               Consumer<AppDataProvider>(
@@ -51,13 +52,31 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
                   items: provider.busList
                   .map((e) => DropdownMenuItem<Bus>(
                     value: e,
-                    child: Text('${e.busName} - ${e.busType}'),)).toList()
-                  
-                  
-                  ,)),
-                  const SizedBox(
+                                  child: Text('${e.busName} - ${e.busType}'),
+                                ))
+                            .toList(),
+                      )),
+              const SizedBox(
                 height: 5,
               ),
+               
+              Consumer<AppDataProvider>(
+                  builder: (context, provider, child) =>
+                      DropdownButtonFormField<BusRoute>(
+                        hint: const Text('Select route'),
+                        onChanged: (value) {
+                          setState(() {
+                            busRoute = value;
+                          });
+                        },
+                        isExpanded: true,
+                        items: provider.routeList
+                            .map((e) => DropdownMenuItem<BusRoute>(
+                                  value: e,
+                                  child: Text(e.routeName),
+                                ))
+                            .toList(),
+                      )),
                TextFormField(
                 keyboardType: TextInputType.number,
                 controller: priceController,
@@ -130,7 +149,7 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
                 child: SizedBox(width: 150,
                 child: ElevatedButton(
                   onPressed: addSchedule,
-                 child: Text('Add Schedule')
+                        child: const Text('Add Schedule')
                  )),
               )
 
@@ -163,5 +182,14 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
   }
 
   void addSchedule() {
+    if (_formKey.currentState!.validate()) {
+      final schedule = BusShedule(
+          bus: bus!,
+          busRoute: busRoute!,
+          departureTime: getFormattedDate(timeOfDay! as DateTime),
+          ticketPrice: int.parse(priceController.text),
+          discount: int.parse(discountController.text),
+          processingFee: int.parse(feeController.text));
+    }
   }
 }

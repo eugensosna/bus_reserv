@@ -8,7 +8,10 @@ import 'package:bus_client/models/response_model.dart';
 import 'package:flutter/material.dart';
 
 class AppDataProvider extends ChangeNotifier {
+  // ignore: prefer_final_fields
   List<Bus> _busList = [];
+  List<BusRoute> _routeList = [];
+  List<BusRoute> get routeList => _routeList;
   List<Bus> get busList =>_busList;
   final List<BusShedule> _sheduleList = [];
   List<BusShedule> get sheduleList => _sheduleList;
