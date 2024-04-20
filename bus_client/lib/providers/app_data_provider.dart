@@ -12,7 +12,12 @@ class AppDataProvider extends ChangeNotifier {
   // ignore: prefer_final_fields
   List<Bus> _busList = [];
   List<BusRoute> _routeList = [];
+  List<BusReservation> _reservationList = [];
+  List<BusReservation> get reservationList => _reservationList;
+
+
   List<BusRoute> get routeList => _routeList;
+
   List<Bus> get busList =>_busList;
   final List<BusShedule> _sheduleList = [];
   List<BusShedule> get sheduleList => _sheduleList;
@@ -34,6 +39,12 @@ class AppDataProvider extends ChangeNotifier {
   Future<ResponseModel> addReservation(BusReservation reservation) {
     return _datasource.addReservation(reservation);
   }
+
+  Future<List<BusReservation>> getAllReservation() async {
+    _reservationList = await _datasource.getAllReservation();
+    notifyListeners();
+    return _reservationList;
+  } 
   Future<ResponseModel> addBus(Bus bus) {
     return _datasource.addBus(bus);
   }

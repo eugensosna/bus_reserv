@@ -10,4 +10,6 @@ class Customer {
     required this.email,
     required this.mobile 
   });
+
+  get customerName => null;
 }
