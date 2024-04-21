@@ -1,8 +1,10 @@
 import 'package:bus_client/customswidgets/reservation_item_body_view.dart';
 import 'package:bus_client/customswidgets/reservation_item_header_view.dart';
+import 'package:bus_client/customswidgets/searchs_box.dart';
 import 'package:bus_client/models/bus_reservation.dart';
 import 'package:bus_client/models/reservation_expansion_item.dart';
 import 'package:bus_client/providers/app_data_provider.dart';
+import 'package:bus_client/utils/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -42,6 +44,7 @@ class _ReservationPageState extends State<ReservationPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            SearchsBox(onSubmit: _search),
             ExpansionPanelList(
               expansionCallback: (index, isExpanded) {
                 setState(() {
@@ -60,5 +63,18 @@ class _ReservationPageState extends State<ReservationPage> {
         ),
       ),
     );
+  }
+
+  _search(value) async {
+    final data = await Provider.of<AppDataProvider>(context, listen: false)
+        .getReservationsByMobile(value);
+    if (data.isEmpty) {
+      showMsg(context, 'not found');
+      return;
+    }
+    setState(() {
+      items = Provider.of<AppDataProvider>(context, listen: false)
+          .getExpansionItems(data);
+    });
   }
 }
