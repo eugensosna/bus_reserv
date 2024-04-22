@@ -1,3 +1,4 @@
+import 'package:bus_client/datasource/temp_db.dart';
 import 'package:bus_client/models/bus_route.dart';
 import 'package:bus_client/providers/app_data_provider.dart';
 import 'package:bus_client/utils/constants.dart';
@@ -95,6 +96,7 @@ class _AddRoutePageState extends State<AddRoutePage> {
   void addRoute() {
     if (_formKey.currentState!.validate()) {
       final route = BusRoute(
+          routeId: TempDB.tableRoute.length + 1,
           routeName: '$from-$to',
           cityFrom: from!,
           cityTo: to!,

@@ -126,7 +126,7 @@ class _AddBusPageState extends State<AddBusPage> {
   void addBus() {
     if (_formKey.currentState!.validate()) {
       final Bus bus = Bus(
-          busId: TempDB.tableBus.length + 1,
+          busId: TempDB.tableBus.length + 1, //Fixme: for test
           busName: nameController.text,
           busNumber: numberController.text,
           busType: busType!,
@@ -136,10 +136,18 @@ class _AddBusPageState extends State<AddBusPage> {
           .addBus(bus)
           .then((value) {
         if (value.responseStatus == ResponseStatus.SAVED) {
-          showMsg(context, 'Bus added ');
+          showMsg(context, value.message);
+          resetFields();
         }
+      }).onError((error, stackTrace) {
+        showMsg(context, 'EROR');
       });
     }
+  }
+
+  void resetFields() {
+    numberController.clear();
+    nameController.clear();
   }
 
   @override

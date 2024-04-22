@@ -16,7 +16,7 @@ class DummyDataSource extends Datasource {
     return ResponseModel(
         responseStatus: ResponseStatus.SAVED,
         statusCode: 200,
-        message: 'bus has been saved',
+        message: 'Bus saved',
         object: {});
     
   
@@ -34,9 +34,13 @@ class DummyDataSource extends Datasource {
   }
 
   @override
-  Future<ResponseModel> addRoute(BusRoute busRoute) {
-    // TODO: implement addRoute
-    throw UnimplementedError();
+  Future<ResponseModel> addRoute(BusRoute busRoute) async {
+    TempDB.tableRoute.add(busRoute);
+    return ResponseModel(
+        responseStatus: ResponseStatus.SAVED,
+        statusCode: 200,
+        message: 'Route saved',
+        object: {});
   }
 
   @override

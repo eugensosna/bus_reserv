@@ -1,5 +1,6 @@
 import 'package:bus_client/datasource/data_source.dart';
 import 'package:bus_client/datasource/dummy_data_source.dart';
+import 'package:bus_client/datasource/temp_db.dart';
 import 'package:bus_client/models/bus_model.dart';
 import 'package:bus_client/models/bus_reservation.dart';
 import 'package:bus_client/models/bus_route.dart';
@@ -50,7 +51,9 @@ class AppDataProvider extends ChangeNotifier {
     return _datasource.getReservationByMobile(mobile);
   }
   Future<ResponseModel> addBus(Bus bus) {
-    return _datasource.addBus(bus);
+    final result = _datasource.addBus(bus);
+    _busList = TempDB.tableBus.toList();
+    return result;
   }
   Future<ResponseModel> addRoute(BusRoute route) {
     return _datasource.addRoute(route);
