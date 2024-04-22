@@ -148,6 +148,8 @@ class _AddBusPageState extends State<AddBusPage> {
   void resetFields() {
     numberController.clear();
     nameController.clear();
+    seatController.clear();
+
   }
 
   @override

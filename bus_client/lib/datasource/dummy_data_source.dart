@@ -50,9 +50,9 @@ class DummyDataSource extends Datasource {
   }
 
   @override
-  Future<List<Bus>> getAllBus() {
+  Future<List<Bus>> getAllBus() async {
     // TODO: implement getAllBus
-    throw UnimplementedError();
+    return TempDB.tableBus.toList();
   }
 
   @override
@@ -61,9 +61,9 @@ class DummyDataSource extends Datasource {
   }
 
   @override
-  Future<List<BusRoute>> getAllRoutes() {
+  Future<List<BusRoute>> getAllRoutes() async {
     // TODO: implement getAllRoutes
-    throw UnimplementedError();
+    return TempDB.tableRoute.toList();
   }
 
   @override

@@ -2,6 +2,7 @@ import 'package:bus_client/datasource/temp_db.dart';
 import 'package:bus_client/models/bus_route.dart';
 import 'package:bus_client/providers/app_data_provider.dart';
 import 'package:bus_client/utils/constants.dart';
+import 'package:bus_client/utils/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -103,18 +104,26 @@ class _AddRoutePageState extends State<AddRoutePage> {
           distanceInKm: double.parse(distanceController.text));
       Provider.of<AppDataProvider>(context, listen: false)
           .addRoute(route)
-          .then((value) => null);
+          .then((value) {
+        if (value.responseStatus == ResponseStatus.SAVED) {
+          showMsg(context, value.message);
+          dispose();
+        }
+      });
     }
   }
 
   @override
   void dispose() {
     distanceController.dispose();
+    from = null;
+    to = null;
 
     super.dispose();
   }
 
   resetFields() {
     distanceController.clear();
+
   }
 }

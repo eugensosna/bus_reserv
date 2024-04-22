@@ -1,3 +1,4 @@
+
 import 'package:bus_client/models/bus_model.dart';
 import 'package:bus_client/models/bus_route.dart';
 import 'package:bus_client/models/bus_schedule.dart';
@@ -24,7 +25,12 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
   final priceController = TextEditingController();
   final discountController = TextEditingController();
   final feeController = TextEditingController();
-  
+  @override
+  void didChangeDependencies() {
+    _getData();
+      
+    super.didChangeDependencies();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -182,14 +188,22 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
   }
 
   void addSchedule() {
+    if (timeOfDay == null) {
+      showMsg(context, 'Please select departude date');
+      return;
+    }
     if (_formKey.currentState!.validate()) {
       final schedule = BusShedule(
           bus: bus!,
           busRoute: busRoute!,
-          departureTime: getFormattedDate(timeOfDay! as DateTime),
+          departureTime: getFormattedTime(timeOfDay!),
           ticketPrice: int.parse(priceController.text),
           discount: int.parse(discountController.text),
           processingFee: int.parse(feeController.text));
     }
+  }
+  void _getData() {
+    Provider.of<AppDataProvider>(context, listen: false).getAllBus();
+    Provider.of<AppDataProvider>(context, listen: false).getAllRoutes();
   }
 }

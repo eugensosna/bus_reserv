@@ -28,6 +28,16 @@ class AppDataProvider extends ChangeNotifier {
     return _datasource.getRouteByCityFromAndCityTo(cityFrom, cityTo);
   }
 
+  void getAllBus() async {
+    _busList = await _datasource.getAllBus();
+    notifyListeners();
+  }
+
+  void getAllRoutes() async {
+    _routeList = await _datasource.getAllRoutes();
+    notifyListeners();
+  }
+
   Future<List<BusShedule>> getShedulesByRouteName(String routeName) async {
     return _datasource.getShedulesByRouteName(routeName);
   }
@@ -52,7 +62,7 @@ class AppDataProvider extends ChangeNotifier {
   }
   Future<ResponseModel> addBus(Bus bus) {
     final result = _datasource.addBus(bus);
-    _busList = TempDB.tableBus.toList();
+   
     return result;
   }
   Future<ResponseModel> addRoute(BusRoute route) {
