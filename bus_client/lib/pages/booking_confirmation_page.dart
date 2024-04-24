@@ -52,7 +52,7 @@ class _BookingConfirmationPageState extends State<BookingConfirmationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Confirmin Booking'),
+        title: const Text('Confirmin Booking'),
       ),
       body: Form(
         key: _formKey,
@@ -79,6 +79,7 @@ class _BookingConfirmationPageState extends State<BookingConfirmationPage> {
                   if (value == null || value.isEmpty) {
                     return emptyFieldErrMessage;
                   }
+                  return null;
                 },
                 onChanged: (value) {
                   setState(() {});
@@ -98,6 +99,7 @@ class _BookingConfirmationPageState extends State<BookingConfirmationPage> {
                   if (value == null || value.isEmpty) {
                     return emptyFieldErrMessage;
                   }
+                  return null;
                 },
                 onChanged: (value) {
                   setState(() {});
@@ -136,7 +138,7 @@ class _BookingConfirmationPageState extends State<BookingConfirmationPage> {
             ),
             Card(
               child: Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -144,7 +146,7 @@ class _BookingConfirmationPageState extends State<BookingConfirmationPage> {
                     Text('Mobile number: ${mobileController.text}'),
                     Text('Customer name: ${emailController.text}'),
                     Text('Route: ${shedule.busRoute.routeName}'),
-                    Text('Departure Date: ${departureDate}'),
+                    Text('Departure Date: $departureDate'),
                     Text('Departure Time: ${shedule.departureTime}'),
                     Text('Ticket Price: $currency${shedule.ticketPrice}'),
                     Text('Total Seat(s): $totalSeatsBooked'),
@@ -153,7 +155,7 @@ class _BookingConfirmationPageState extends State<BookingConfirmationPage> {
                     Text('Processing Fee : ${shedule.processingFee}'),
                     Text(
                       'Grand Total : $currency${getGrandTotal(shedule.discount, totalSeatsBooked, shedule.ticketPrice, shedule.processingFee)}',
-                      style: TextStyle(fontSize: 18),
+                      style: const TextStyle(fontSize: 18),
                     )
                   ],
                 ),

@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 
 class ReservationItemHeaderView extends StatelessWidget {
   final ReservationExpansionHeader header;
-  const ReservationItemHeaderView({Key? key, required this.header})
-      : super(key: key);
+  const ReservationItemHeaderView({super.key, required this.header});
 
   @override
   Widget build(BuildContext context) {

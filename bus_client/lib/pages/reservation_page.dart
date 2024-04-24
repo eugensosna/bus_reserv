@@ -1,7 +1,6 @@
 import 'package:bus_client/customswidgets/reservation_item_body_view.dart';
 import 'package:bus_client/customswidgets/reservation_item_header_view.dart';
 import 'package:bus_client/customswidgets/searchs_box.dart';
-import 'package:bus_client/models/bus_reservation.dart';
 import 'package:bus_client/models/reservation_expansion_item.dart';
 import 'package:bus_client/providers/app_data_provider.dart';
 import 'package:bus_client/utils/helper_functions.dart';
@@ -9,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ReservationPage extends StatefulWidget {
-  const ReservationPage({Key? key}) : super(key: key);
+  const ReservationPage({super.key});
 
   @override
   _ReservationPageState createState() => _ReservationPageState();

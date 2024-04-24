@@ -29,7 +29,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: MainDrawer(),
+        drawer: const MainDrawer(),
         appBar: AppBar(
           title: const Text('Search'),
         ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class SearchsBox extends StatefulWidget {
   final Function(String) onSubmit;
-  const SearchsBox({Key? key, required this.onSubmit}) : super(key: key);
+  const SearchsBox({super.key, required this.onSubmit});
 
   @override
   _SearchsBoxState createState() => _SearchsBoxState();
