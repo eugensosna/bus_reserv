@@ -1,4 +1,4 @@
-package com.example.myfirstflutterproject;
+package com.sosna.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
