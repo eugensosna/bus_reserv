@@ -2,10 +2,11 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.4'
 	id 'io.spring.dependency-management' version '1.1.6'
+	id 'org.hibernate.orm' version '6.5.3.Final'
 	id 'org.graalvm.buildtools.native' version '0.10.3'
 }
 
-group = 'com.sosna'
+group = 'ua.sosna'
 version = '0.0.1-SNAPSHOT'
 
 java {
@@ -25,14 +26,24 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	//FIXME: add correct db
+	//runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	//runtimeOnly 'com.mysql:mysql-connector-j'
+	//runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'io.projectreactor:reactor-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+hibernate {
+	enhancement {
+		enableAssociationManagement = true
+	}
 }
 
 tasks.named('test') {

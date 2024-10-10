@@ -1,10 +1,10 @@
-package com.sosna.demo;
+package ua.sosna.reservationudemy;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MyfirstflutterprojectApplicationTests {
+class ReservationudemyApplicationTests {
 
 	@Test
 	void contextLoads() {
