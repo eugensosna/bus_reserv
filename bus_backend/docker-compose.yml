@@ -9,7 +9,7 @@ services:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: blablabudu
-      MYSQL_DATABASE: resrvation
+      MYSQL_DATABASE: reservation
     restart: always
 
   adminer:
