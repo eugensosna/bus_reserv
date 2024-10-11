@@ -1,5 +1,7 @@
 package ua.sosna.reservationudemy.entities;
 
+import jakarta.annotation.Generated;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +11,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class Bus {
+	@Id
+	@GeneratedValue(strategy =GenerationType.IDENTITY )
 	private Long busId;
 	
 	private String busName;
@@ -18,6 +23,7 @@ public class Bus {
 	
 	private int totalSeat;
 	
+	@Column(unique = true)
 	private String busNumer;
 
 }
