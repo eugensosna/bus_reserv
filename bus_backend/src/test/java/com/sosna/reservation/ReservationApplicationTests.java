@@ -1,10 +1,10 @@
-package ua.sosna.reservationudemy;
+package com.sosna.reservation;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ReservationudemyApplicationTests {
+class ReservationApplicationTests {
 
 	@Test
 	void contextLoads() {
