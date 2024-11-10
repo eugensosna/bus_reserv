@@ -45,13 +45,16 @@ public class Bus {
 		public void setBusNumber(String busNumber) {
 			this.busNumber = busNumber;
 		}
-		public Bus(String busName, String busType, Integer totalSeat, String busNumber) {
+		public Bus(Long busId, String busName, String busType, Integer totalSeat, String busNumber) {
 			super();
-			//this.busId = busId;
+			this.busId = busId;
 			this.busName = busName;
 			this.busType = busType;
 			this.totalSeat = totalSeat;
 			this.busNumber = busNumber;
+		}
+		public Bus() {
+			
 		}
 
 }

@@ -48,4 +48,8 @@ public class BusRoute {
 		this.cityTo = cityTo;
 		this.distanceInKm = distanceInKm;
 	}
+	public BusRoute() {
+		super();
+	}
+	
 }
