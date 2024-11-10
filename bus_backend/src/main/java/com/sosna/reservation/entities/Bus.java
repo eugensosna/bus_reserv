@@ -53,5 +53,8 @@ public class Bus {
 			this.totalSeat = totalSeat;
 			this.busNumber = busNumber;
 		}
+		public Bus() {
+			
+		}
 
 }
