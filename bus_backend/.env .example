@@ -1,0 +1,4 @@
+MYSQL_ROOT_PASSWORD=password
+SPRING_DATASOURCE_URL=jdbc:mariadb://localhost:3306/reservation
+MYSQL_HOST=localhost
+MYSQL_DATABASE=reservation
