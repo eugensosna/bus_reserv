@@ -1,7 +1,7 @@
 package com.sosna.reservation.models;
 
 import org.springframework.http.HttpStatus;
-S
+
 public class ReservationApiException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 	private final HttpStatus status;
@@ -11,6 +11,18 @@ public class ReservationApiException extends RuntimeException {
 		super();
 		this.status = status;
 		this.message = message;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public HttpStatus getStatus() {
+		return status;
+	}
+
+	public String getMessage() {
+		return message;
 	}
 
 }
