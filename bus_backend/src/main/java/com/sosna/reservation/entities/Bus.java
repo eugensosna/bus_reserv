@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 
 import java.util.UUID;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.Version;
 
 import com.github.f4b6a3.uuid.UuidCreator;
@@ -14,15 +15,21 @@ import jakarta.persistence.*;
 
 @Entity
 public class Bus {
+	public static final String COLUMN_UUID = "UUID";
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long busId;
-	
-	
+
+	//@GeneratedValue(generator = "UUID")
+	//@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")`
+	//@GeneratedValue
+	@Column(name = COLUMN_UUID, updatable = false, nullable = false, columnDefinition = "UUID")
 	private UUID uuid;
 	@Version
+	//@Column()
 	private Long version;
-	
+
 	private String busName;
 	private String busType;
 	private Integer totalSeat;
@@ -89,13 +96,13 @@ public class Bus {
 		this.uuid = uuid;
 	}
 
-	public Long getVersion() {
+	/*public Long getVersion() {
 		return version;
 	}
 
 	public void setVersion(Long version) {
 		this.version = version;
-	}
+	}*/
 
 	public Bus(Long busId, String busName, String busType, Integer totalSeat, String busNumber) {
 		super();
@@ -106,11 +113,8 @@ public class Bus {
 		this.busNumber = busNumber;
 	}
 
-	
 	public Bus() {
 		uuid = UuidCreator.getTimeOrderedEpoch();
-		
-		
 
 	}
 

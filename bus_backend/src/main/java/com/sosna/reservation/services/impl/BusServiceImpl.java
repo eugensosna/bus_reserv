@@ -16,13 +16,13 @@ public class BusServiceImpl  implements BusService{
 
 	@Override
 	public Bus addBus(Bus bus) {
-		// TODO Auto-generated method stub
+		
 		return busRepository.save(bus);
 	}
 
 	@Override
 	public List<Bus> getAllBus() {
-		// TODO Auto-generated method stub
+		
 		return busRepository.findAll();
 	}
 

@@ -11,20 +11,19 @@ public class AppUsers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    public AppUsers(Long id, String userName, String password, String role) {
-		super();
-		this.id = id;
-		this.userName = userName;
-		this.password = password;
-		this.role = role;
-	}
+   
 	private String userName;
+    
+	
+	private String password;
+    private String role;
     public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
+    
 	public String getUserName() {
 		return userName;
 	}
@@ -43,7 +42,16 @@ public class AppUsers {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	private String password;
-    private String role;
+    public AppUsers(Long id, String userName, String password, String role) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.password = password;
+		this.role = role;
+	}
+	public AppUsers() {
+		super();
+	}
+    
 }
 
